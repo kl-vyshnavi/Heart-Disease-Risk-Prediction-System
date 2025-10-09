@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 400px;
+    }
+    .result {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    .message {
+      font-size: 1em;
+      margin-top: 10px;
+      color: #555;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Heart Disease Risk Prediction</h2>
+    <div class="result" style="color: {{ color }};">
+      Risk Level: {{ risk }}<br>
+      Probability: {{ prob }}%
+    </div>
+
+    {% if risk == "Medium" %}
+      <div class="message">
+        ⚠️ Your risk is moderate. Consider lifestyle changes and consulting a doctor.
+      </div>
+    {% elif risk == "High" %}
+      <div class="message" style="color: red;">
+        🚨 High risk! Please consult a doctor as soon as possible.
+      </div>
+    {% else %}
+      <div class="message" style="color: green;">
+        ✅ Low risk. Keep maintaining a healthy lifestyle!
+      </div>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="btn">Check Again</a>
+  </div>
+</body>
+</html>

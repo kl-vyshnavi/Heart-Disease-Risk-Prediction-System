@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Check Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 400px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      padding: 12px 25px;
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 15px;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enter Your Health Details</h2>
+    <form action="{{ url_for('result') }}" method="get">
+      <input type="number" name="age" placeholder="Age" min="1" max="120" required>
+      <input type="number" name="sex" placeholder="Sex (0=Female, 1=Male)" min="0" max="1" required>
+      <input type="number" name="cp" placeholder="Chest Pain Type (0-3)" min="0" max="3" required>
+      <input type="number" name="trestbps" placeholder="Resting Blood Pressure" min="80" max="250" required>
+      <input type="number" name="chol" placeholder="Cholesterol" min="100" max="600" required>
+      <input type="number" name="fbs" placeholder="Fasting Blood Sugar > 120 mg/dl (0 or 1)" min="0" max="1" required>
+      <input type="number" name="restecg" placeholder="Resting ECG (0-2)" min="0" max="2" required>
+      <input type="number" name="thalach" placeholder="Max Heart Rate Achieved" min="60" max="220" required>
+      <input type="number" name="exang" placeholder="Exercise Induced Angina (0 or 1)" min="0" max="1" required>
+      <input type="number" name="oldpeak" placeholder="ST Depression" step="0.1" min="0" max="10" required>
+      <input type="number" name="slope" placeholder="Slope of Peak ST (0-2)" min="0" max="2" required>
+      <input type="number" name="ca" placeholder="Major Vessels Colored (0-3)" min="0" max="3" required>
+      <input type="number" name="thal" placeholder="Thalassemia (1=Normal, 2=Fixed Defect, 3=Reversible Defect)" min="1" max="3" required>
+      <button type="submit" class="btn">Predict</button>
+    </form>
+  </div>
+</body>
+</html>
